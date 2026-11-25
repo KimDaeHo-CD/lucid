@@ -16,6 +16,11 @@ body {
   position: absolute;
   left: 50px;
 }
+.header .logo a {
+  display: flex;
+  height: 80px;
+  align-items: center;
+}
 .header .util-menu {
   position: absolute;
   right: 50px;

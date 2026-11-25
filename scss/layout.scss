@@ -16,6 +16,11 @@ body {
   .logo {
     position: absolute;
     left: 50px;
+    a {
+      display: flex;
+      height: 80px;
+      align-items: center;
+    }
   }
   .util-menu {
     position: absolute;
