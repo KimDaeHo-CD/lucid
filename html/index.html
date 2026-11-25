@@ -18,19 +18,20 @@
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=search"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=menu"
     />
     <!-- css 초기화 코드 -->
     <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/layout.css">
     <title>Lucid.kr</title>
   </head>
   <body>
     <header class="header">
-      <h1 class="heading01">
-        <img src="../images/common/logo.png" alt="" class="logo" />
+      <h1 class="logo">
+        <img src="../images/common/logo.png" alt=""  />
       </h1>
       <nav class="gnb">
-        <ul>
+        <ul class="list">
           <li><a href="">회사소개</a></li>
           <li><a href="">LK 렌즈</a></li>
           <li><a href="">RGP 렌즈</a></li>
@@ -41,6 +42,29 @@
           <li><a href="">병원검색</a></li>
         </ul>
       </nav>
+      <div class="util-menu">
+        <div class="language-box">
+          <div class="language">KR</div>
+          <ul class="list">
+            <li><a href="">KR</a></li>
+            <li><a href="">EN</a></li>
+            <li><a href="">CN</a></li>
+          </ul>
+        </div>
+         <div class="all-menu>
+            <button class="btn">
+                <span class="material-symbols-outlined"> menu </span>
+            </button>
+        </div>
+      </div>
     </header>
+    <div class="main-visual">
+      <div class="mask">
+        <div class="swiper-wraper">
+          <div class="swiper-slide visual01"><video src="../images/main/main_video.mp4" autoplay muted loop></video></div>
+          <div class="swiper-slide visual02"></div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

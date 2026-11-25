@@ -1,16 +1,58 @@
-a {
-  text-decoration: none;
-}
-li {
-  list-style: none;
-}
+@import "vars";
+
 body {
   font-family: "Pretendard", sans-serif;
 }
-.heading01 {
-  position: absolute;
-  left: 0;
-  img {
-    width: 333px;
+.header {
+  position: fixed;
+  background-color: #fff;
+  //   width: calc(100%-40px);
+  right: 20px;
+  left: 20px;
+  top: 20px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  .logo {
+    position: absolute;
+    left: 50px;
+  }
+  .util-menu {
+    position: absolute;
+    right: 50px;
+    display: flex;
+    align-items: center;
+    height: $header-height;
+    gap: 20px;
+    .language-box {
+      .list {
+        display: none;
+      }
+    }
+    .all-menu {
+      .btn {
+        padding: 0;
+        display: flex;
+      }
+    }
+  }
+  .gnb {
+    .list {
+      //   height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 500;
+      li {
+        a {
+          display: flex;
+          padding: 0 30px;
+          height: $header-height;
+          align-items: center;
+          border: 1px solid #31c41e;
+        }
+      }
+    }
   }
 }
