@@ -3,6 +3,21 @@
 body {
   font-family: "Pretendard", sans-serif;
 }
+.container {
+  width: calc(100% - 200px);
+  margin: auto;
+  // border: 1px solid #31c41e;
+}
+.heading02 {
+  font-size: clamp(20px, 1.8vw, 24px);
+  font-weight: 700;
+}
+.heading03 {
+  font-size: clamp(24px, 2.4vw, 42px);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
 .header {
   display: flex;
   position: fixed;
@@ -10,10 +25,10 @@ body {
   //   width: calc(100%-40px);
   right: 20px;
   left: 20px;
+  z-index: 9;
   justify-content: center;
   border-radius: 20px;
   background-color: #fff;
-  z-index: 9;
   .logo {
     position: absolute;
     left: 50px;
@@ -50,13 +65,14 @@ body {
       align-items: center;
       font-size: 18px;
       font-weight: 500;
+      gap: 1px;
       li {
         a {
           display: flex;
           align-items: center;
           height: $header-height;
           padding: 0 30px;
-          border: 1px solid #31c41e;
+          border: 1px solid #002385;
         }
       }
     }
@@ -67,39 +83,184 @@ body {
     overflow: hidden;
     .visual01 {
       video {
-        height: 97vh;
         width: 100%;
+        height: 97vh;
         object-fit: cover;
       }
     }
     .visual02 {
+      height: 97vh;
       background-image: url("../images/main/visual02.png");
       background-size: cover;
       background-repeat: no-repeat;
-      height: 97vh;
     }
     .pagination {
+      display: flex;
       position: absolute;
+      top: auto; //원래 기본 css 값을무시해준다
       bottom: 100px;
       left: 200px;
-      top: auto; //원래 기본 css 값을무시해준다
-      width: auto; //원래 기본 css 값을무시해준다
       z-index: 3;
-      display: flex;
       gap: 20px;
+      width: auto; //원래 기본 css 값을무시해준다
       .swiper-pagination-bullet {
         width: 20px;
         height: 20px;
-        border-radius: 100px;
-        opacity: 1;
-        background: none;
         border: 3px solid #fff;
+        border-radius: 100px;
+        background: none;
+        opacity: 1;
         transition: all 0.25s ease;
         &-active {
           width: 100px;
-          background-color: #0096d1;
+          background-color: #00d9ff;
         }
       }
     }
+  }
+}
+.section01 {
+  overflow: hidden;
+  padding: 200px 0;
+  background-color: #e2e2e2;
+  position: relative;
+  .container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    .title-box {
+      position: absolute;
+      left: 0;
+      p {
+        color: $light-gray;
+        font-size: 18px;
+        margin-top: 30px;
+      }
+    }
+    .img-box {
+      overflow: hidden;
+      width: 30vw;
+      border-radius: 50px;
+      aspect-ratio: 1/1.35;
+      z-index: 8;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .list {
+      position: absolute;
+      right: 0;
+      font-size: 30px;
+      font-weight: 500;
+      li {
+        margin-bottom: 20px;
+        a {
+          display: inline-block;
+          // a는 display가 inline이라 after가 적용 안돼
+          // 만약 block을 주면 부모너비 따라가므로 width 100%가 된다
+          //이때 자기자신만큼의 너비를 가지며 block요소로 비꾸는게 inline-block이다
+          &:after {
+            display: block;
+            width: 0;
+            height: 2px;
+            transition: all 0.25s ease;
+            content: "";
+            background-color: $dark-gray;
+          }
+          &:hover:after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+  .rolling-txt {
+    display: flex;
+    width: max-content;
+    color: #fff;
+    font-size: clamp(60px, 10vw, 200px);
+    font-weight: 700;
+    animation: marquee 20s linear infinite;
+    position: absolute;
+    text-shadow: 0 0 10px rgba(0, 1, 87, 0.3);
+    bottom: 60px;
+    div {
+      white-space: nowrap;
+      padding-right: 40px;
+      flex-shrink: 0;
+    }
+  }
+}
+.section02 {
+  padding: 200px 100px;
+  background-color: $main-color;
+  background-image: url("../images/main/sec3_bgIcon.png");
+  background-repeat: no-repeat;
+  background-position: 0 200px;
+  .title-box {
+    color: #fff;
+    text-align: center;
+    .desc {
+      margin: 10px 0;
+      font-size: 20px;
+      opacity: 0.5;
+    }
+    .alert {
+      opacity: 0.5;
+    }
+  }
+  .list {
+    display: flex;
+    gap: 50px;
+    margin-top: 100px;
+    li {
+      padding: 50px;
+      border-radius: 50px;
+      flex-basis: 25%;
+      background-color: #eee;
+      transition: all 0.25s ease;
+      &:hover {
+        transform: translateY(-40px);
+      }
+      .upper {
+        display: flex;
+        flex-direction: column;
+        .category {
+          color: $main-color;
+          font-size: 24px;
+        }
+        .icon-box {
+          display: inline-flex;
+          padding: 20px;
+          border-radius: 100px;
+          background-color: #fff;
+          align-self: start;
+          margin-top: 20px;
+        }
+      }
+      .lower {
+        margin-top: 100px;
+        .title {
+          font-size: 36px;
+          font-weight: 500;
+          margin-bottom: 20px;
+        }
+        p {
+          font-size: 18px;
+          color: $gray;
+        }
+      }
+    }
+  }
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
   }
 }
