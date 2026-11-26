@@ -4,31 +4,32 @@ body {
   font-family: "Pretendard", sans-serif;
 }
 .header {
+  display: flex;
   position: fixed;
-  background-color: #fff;
+  top: 20px;
   //   width: calc(100%-40px);
   right: 20px;
   left: 20px;
-  top: 20px;
-  border-radius: 20px;
-  display: flex;
   justify-content: center;
+  border-radius: 20px;
+  background-color: #fff;
+  z-index: 9;
   .logo {
     position: absolute;
     left: 50px;
     a {
       display: flex;
-      height: 80px;
       align-items: center;
+      height: 80px;
     }
   }
   .util-menu {
+    display: flex;
     position: absolute;
     right: 50px;
-    display: flex;
     align-items: center;
-    height: $header-height;
     gap: 20px;
+    height: $header-height;
     .language-box {
       .list {
         display: none;
@@ -36,8 +37,8 @@ body {
     }
     .all-menu {
       .btn {
-        padding: 0;
         display: flex;
+        padding: 0;
       }
     }
   }
@@ -52,10 +53,51 @@ body {
       li {
         a {
           display: flex;
-          padding: 0 30px;
-          height: $header-height;
           align-items: center;
+          height: $header-height;
+          padding: 0 30px;
           border: 1px solid #31c41e;
+        }
+      }
+    }
+  }
+}
+.main-visual {
+  .mask {
+    overflow: hidden;
+    .visual01 {
+      video {
+        height: 97vh;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+    .visual02 {
+      background-image: url("../images/main/visual02.png");
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 97vh;
+    }
+    .pagination {
+      position: absolute;
+      bottom: 100px;
+      left: 200px;
+      top: auto; //원래 기본 css 값을무시해준다
+      width: auto; //원래 기본 css 값을무시해준다
+      z-index: 3;
+      display: flex;
+      gap: 20px;
+      .swiper-pagination-bullet {
+        width: 20px;
+        height: 20px;
+        border-radius: 100px;
+        opacity: 1;
+        background: none;
+        border: 3px solid #fff;
+        transition: all 0.25s ease;
+        &-active {
+          width: 100px;
+          background-color: #0096d1;
         }
       }
     }

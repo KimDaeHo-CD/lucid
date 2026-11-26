@@ -23,6 +23,10 @@
     <!-- css 초기화 코드 -->
     <link rel="stylesheet" href="../css/reset.css" />
     <link rel="stylesheet" href="../css/layout.css">
+    <link
+  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <title>Lucid.kr</title>
   </head>
   <body>
@@ -60,11 +64,20 @@
     </header>
     <div class="main-visual">
       <div class="mask">
-        <div class="swiper-wraper">
+        <div class="swiper-wrapper">
           <div class="swiper-slide visual01"><video src="../images/main/main_video.mp4" autoplay muted loop></video></div>
           <div class="swiper-slide visual02"></div>
         </div>
+        <div class="pagination"></div>
       </div>
     </div>
+    <script>
+      const mainSlider = new Swiper(".main-visual .mask", {
+        pagination: {
+          el: ".main-visual .pagination",
+          clickable: true,
+        }
+      });
+    </script>
   </body>
 </html>
