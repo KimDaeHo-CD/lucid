@@ -1,4 +1,5 @@
 @import "vars";
+@import "mixins";
 
 body {
   font-family: "Pretendard", sans-serif;
@@ -6,26 +7,27 @@ body {
 .container {
   width: calc(100% - 200px);
   margin: auto;
-  // border: 1px solid #31c41e;
+  // border: 1px solid #f00;
 }
 .heading02 {
   font-size: clamp(20px, 1.8vw, 24px);
   font-weight: 700;
+  margin-bottom: 30px;
 }
 .heading03 {
   font-size: clamp(24px, 2.4vw, 42px);
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 30px;
 }
+
 .header {
   display: flex;
   position: fixed;
   top: 20px;
-  //   width: calc(100%-40px);
   right: 20px;
+  //width: calc(100% - 40px);
   left: 20px;
-  z-index: 9;
+  z-index: 99;
   justify-content: center;
   border-radius: 20px;
   background-color: #fff;
@@ -35,7 +37,7 @@ body {
     a {
       display: flex;
       align-items: center;
-      height: 80px;
+      height: $header-height;
     }
   }
   .util-menu {
@@ -59,20 +61,18 @@ body {
   }
   .gnb {
     .list {
-      //   height: 80px;
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 18px;
       font-weight: 500;
-      gap: 1px;
+      // gap: 0 60px;
       li {
         a {
           display: flex;
           align-items: center;
           height: $header-height;
           padding: 0 30px;
-          border: 1px solid #002385;
         }
       }
     }
@@ -84,25 +84,24 @@ body {
     .visual01 {
       video {
         width: 100%;
-        height: 97vh;
+        height: 100vh;
         object-fit: cover;
       }
     }
     .visual02 {
-      height: 97vh;
-      background-image: url("../images/main/visual02.png");
+      height: 100vh;
+      background-image: url("../images/main/main_visual1.png");
       background-size: cover;
       background-repeat: no-repeat;
     }
     .pagination {
       display: flex;
       position: absolute;
-      top: auto; //원래 기본 css 값을무시해준다
+      top: auto; //원래 가지고 있는 css 값이 있다. wiper-bundle.min.css에 미리 정의되어 있다.
       bottom: 100px;
       left: 200px;
-      z-index: 3;
-      gap: 20px;
-      width: auto; //원래 기본 css 값을무시해준다
+      z-index: 2;
+      width: auto; //원래 가지고 있는 css 값이 있다. wiper-bundle.min.css에 미리 정의되어 있다.
       .swiper-pagination-bullet {
         width: 20px;
         height: 20px;
@@ -113,7 +112,7 @@ body {
         transition: all 0.25s ease;
         &-active {
           width: 100px;
-          background-color: #00d9ff;
+          background-color: #fff;
         }
       }
     }
@@ -121,12 +120,13 @@ body {
 }
 .section01 {
   overflow: hidden;
-  padding: 200px 0;
-  background-color: #e2e2e2;
   position: relative;
+  padding: 200px 0;
+  background-color: #e3e8ed;
   .container {
     display: flex;
     position: relative;
+    z-index: 1;
     justify-content: center;
     align-items: center;
     .title-box {
@@ -143,7 +143,6 @@ body {
       width: 30vw;
       border-radius: 50px;
       aspect-ratio: 1/1.35;
-      z-index: 8;
       img {
         width: 100%;
         height: 100%;
@@ -159,16 +158,15 @@ body {
         margin-bottom: 20px;
         a {
           display: inline-block;
-          // a는 display가 inline이라 after가 적용 안돼
-          // 만약 block을 주면 부모너비 따라가므로 width 100%가 된다
-          //이때 자기자신만큼의 너비를 가지며 block요소로 비꾸는게 inline-block이다
+          //a는 display가 inline 이라서 after가 먹지 않는다. 만약 block을 주면 부모 넓이 따라가므로 width:100%가 된다.
+          //이때 자기자신만큼의 넓이를 가지면서 block요소로 바꿔주는게 inline-block이다.
           &:after {
             display: block;
             width: 0;
             height: 2px;
-            transition: all 0.25s ease;
-            content: "";
+            transition: all 0.5s ease;
             background-color: $dark-gray;
+            content: "";
           }
           &:hover:after {
             width: 100%;
@@ -179,32 +177,33 @@ body {
   }
   .rolling-txt {
     display: flex;
+    position: absolute;
+    bottom: 100px;
     width: max-content;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.6);
     font-size: clamp(60px, 10vw, 200px);
     font-weight: 700;
-    animation: marquee 20s linear infinite;
-    position: absolute;
-    text-shadow: 0 0 10px rgba(0, 1, 87, 0.3);
-    bottom: 60px;
+    animation: marquee 10s linear infinite;
+    text-shadow: 0 0 20px rgba(5, 0, 73, 0.2);
     div {
-      white-space: nowrap;
-      padding-right: 40px;
       flex-shrink: 0;
+      padding-right: 40px;
+      white-space: nowrap;
     }
   }
 }
 .section02 {
-  padding: 200px 100px;
+  padding: 200px 0;
   background-color: $main-color;
   background-image: url("../images/main/sec3_bgIcon.png");
+  background-position: left 0 top 200px;
   background-repeat: no-repeat;
-  background-position: 0 200px;
   .title-box {
     color: #fff;
     text-align: center;
     .desc {
-      margin: 10px 0;
+      margin: 20px 0;
+      color: rgba(255, 255, 255, 0.5);
       font-size: 20px;
       opacity: 0.5;
     }
@@ -214,16 +213,17 @@ body {
   }
   .list {
     display: flex;
-    gap: 50px;
+    gap: 20px;
     margin-top: 100px;
     li {
       padding: 50px;
       border-radius: 50px;
+      //opacity: 0.5;
+      transition: all 0.25s ease;
       flex-basis: 25%;
       background-color: #eee;
-      transition: all 0.25s ease;
       &:hover {
-        transform: translateY(-40px);
+        transform: translateY(-20px);
       }
       .upper {
         display: flex;
@@ -236,9 +236,9 @@ body {
           display: inline-flex;
           padding: 20px;
           border-radius: 100px;
-          background-color: #fff;
           align-self: start;
           margin-top: 20px;
+          background-color: #fff;
         }
       }
       .lower {
@@ -249,9 +249,192 @@ body {
           margin-bottom: 20px;
         }
         p {
-          font-size: 18px;
           color: $gray;
+          font-size: 18px;
         }
+      }
+    }
+  }
+}
+.section03 {
+  overflow: hidden;
+  padding: 200px 0;
+  .list {
+    li {
+      a {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 50px;
+        border-radius: 50px;
+        transition: all 0.25s ease;
+        background-color: #e8e8e8;
+        &:hover {
+          color: #fff;
+          background-color: $main-color;
+          .more:before {
+            background-color: #fff;
+          }
+        }
+        .category-box {
+          display: flex;
+          justify-content: space-between;
+          .category {
+            font-size: 24px;
+            font-weight: 700;
+          }
+          .date {
+            font-size: 18px;
+            font-weight: 500;
+          }
+        }
+        .img-box {
+          overflow: hidden;
+          border-radius: 30px;
+          img {
+            width: 100%;
+          }
+        }
+        .title {
+          font-size: 24px;
+          font-weight: 700;
+        }
+        .more {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-top: 100px;
+          //가상의 엘리먼트  pseudo element
+
+          &:before {
+            transition: all 0.25s ease;
+            @include dot();
+          }
+        }
+      }
+    }
+  }
+}
+.section04 {
+  padding: 100px 0;
+  background-color: #000;
+  .title-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+    border-radius: 50px;
+    color: #fff;
+    text-align: center;
+    background-image: url("../images/main/sec4_bg.jpg");
+    background-size: cover;
+    h3 {
+      font-size: clamp(24px, 4vw, 64px);
+    }
+    a {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      align-items: center;
+      gap: 10px;
+      padding: 20px 50px;
+      border-radius: 10px;
+      background-color: #000;
+      margin-top: 30px;
+      span {
+        position: relative;
+        z-index: 1;
+      }
+      &:hover:after {
+        width: 100%;
+        // transform: scale(1);
+      }
+      &:after {
+        display: block;
+        position: absolute;
+        left: 0;
+        z-index: 0;
+        width: 5%;
+        height: 100%;
+        // transform: scale(0);
+        transition: all 0.25s ease;
+        content: "";
+        background-color: $main-color;
+      }
+      &:before {
+        position: relative;
+        z-index: 1;
+        @include dot();
+      }
+    }
+  }
+}
+.section05 {
+  color: #fff;
+  background-color: #000;
+  .container {
+    padding: 100px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  .list {
+    li {
+      margin-bottom: 10px;
+    }
+  }
+  .info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    padding: 50px 0;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 100px;
+    font-size: 20px;
+    margin-top: 50px;
+    .txt {
+      display: flex;
+      align-items: center;
+      color: rgba(255, 255, 255, 0.7);
+      span {
+        padding: 5px;
+        border: 1px solid $main-color;
+        border-radius: 100px;
+        margin-right: 10px;
+      }
+      &::after {
+        display: block;
+        width: 1px;
+        height: 30px;
+        content: "";
+        background-color: #fff;
+        margin-left: 30px;
+      }
+    }
+    .period {
+      display: flex;
+      flex-direction: column;
+      font-weight: 500;
+    }
+  }
+}
+.footer {
+  color: #fff;
+  background-color: #000;
+  font-size: 18px;
+  .container {
+    padding: 100px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  dl {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 50px;
+    div {
+      display: flex;
+      dt {
+        flex-basis: 150px;
       }
     }
   }
